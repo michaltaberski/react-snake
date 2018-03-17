@@ -6,18 +6,33 @@
   "scripts": {
     "start": "parcel src/index.html -p 3000",
     "precommit": "lint-staged",
-    "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx}\""
+    "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx}\"",
+    "eslint": "./node_modules/.bin/eslint src"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
     "lint-staged": "^7.0.0",
     "parcel-bundler": "^1.6.2",
     "prettier": "^1.11.1"
