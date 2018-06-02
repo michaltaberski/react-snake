@@ -1,6 +1,6 @@
 import times from 'lodash/times';
 
-export const BOARD_SIZE = 32;
+export const BOARD_SIZE = 120;
 
 export const EMPTY_BOARD = times(BOARD_SIZE, () => (
   times(BOARD_SIZE, () => null)

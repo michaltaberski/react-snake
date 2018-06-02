@@ -23,9 +23,7 @@ const Board = (props) => (
           <Field
             key={`${rowIndex}${colIndex}`}
             value={fieldValue}
-          >
-            x: {rowIndex}
-          </Field>
+          />
         ))}
       </Row>
     ))}

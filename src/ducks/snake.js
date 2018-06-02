@@ -1,54 +1,41 @@
 import update from 'immutability-helper';
-import last from 'lodash/last';
 import { INIT_SNAKE_BODY, DIRECTIONS } from 'config';
-import { GAME_TICK } from './game';
+import { GAME_TICK, GAME_TICK_CALLBACK } from './game';
+import { getNextSnakeStep, removeTail, getUpdatedDirection, snakeEats } from 'lib/utils';
 
 const UPDATE_DIRECTION = 'UPDATE_DIRECTION';
+export const EAT = 'EAT';
 
 const initialState = {
   alive: true,
   direction: DIRECTIONS.RIGHT,
   body: INIT_SNAKE_BODY,
+  grow: 0,
 };
-
-const findNewBodyChunk = (snakeState) => {
-  const { body, direction } = snakeState;
-  const snakeHead = last(body);
-  switch (direction) {
-    case DIRECTIONS.RIGHT:
-      return [snakeHead[0] + 1, snakeHead[1]];
-    default:
-      return snakeHead;
-  }
-}
-
-const nextSnakeStep = (snakeState) => {
-  const { alive } = snakeState;
-  if (!alive) return snakeState;
-  const newBodyChunk = findNewBodyChunk(snakeState);
-  return update(snakeState, {
-    body: {
-      $push: [newBodyChunk],
-    },
-  });
-}
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case EAT:
+      return snakeEats(state, action.payload);
     case GAME_TICK:
-      return nextSnakeStep(state);
+      return getNextSnakeStep(state);
+    case GAME_TICK_CALLBACK:
+      return removeTail(state);
     case UPDATE_DIRECTION:
-      return update(state, {
-        direction: {
-          $set: action.payload,
-        },
-      });
+      return getUpdatedDirection(state, action.payload);
     default:
       return state;
   }
 }
 
-export const updateDirecton = (newDirection) => {
+export const eat = (food) => {
+  return {
+    type: EAT,
+    payload: food,
+  };
+}
+
+export const updateDirection = (newDirection) => {
   return {
     type: UPDATE_DIRECTION,
     payload: newDirection,

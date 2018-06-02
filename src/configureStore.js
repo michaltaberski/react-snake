@@ -3,12 +3,12 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 // DUCKS
-import board from 'ducks/board';
 import snake from 'ducks/snake';
+import game from 'ducks/game';
 
 const rootReducer = combineReducers({
-  board,
   snake,
+  game,
 });
 
 const configureStore = () => {

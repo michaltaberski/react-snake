@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html -p 3000",
+    "start": "parcel src/index.html --no-hmr -p 3000",
     "precommit": "lint-staged",
     "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx}\"",
     "eslint": "./node_modules/.bin/eslint src"

@@ -7,6 +7,13 @@ const FieldWrapper = styled(Flex).attrs({ flex: 1 })`
   ${props => props.value === 'S' && css`
     background-color: green;
   `}
+  ${props => props.value === 'D' && css`
+    background-color: red;
+  `}
+  ${props => props.value === 'F' && css`
+    background-color: orange;
+  `}
+
 `;
 
 const Field = (props) => (
