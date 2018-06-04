@@ -25,20 +25,6 @@ class Game extends React.Component {
     return (
       <div>
         <h1>Game</h1>
-        <button onClick={() => this.props.gameTick()}>NEXT TICK</button>
-        {[
-          DIRECTIONS.TOP,
-          DIRECTIONS.RIGHT,
-          DIRECTIONS.BOTTOM,
-          DIRECTIONS.LEFT,
-        ].map((direction) => (
-          <button
-            key={direction}
-            onClick={() => this.props.updateDirection(direction)}
-          >
-            {direction}
-          </button>
-        ))}
         <Board />
       </div>
     );
