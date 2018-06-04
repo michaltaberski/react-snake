@@ -7,8 +7,8 @@ import { boardSpaceSelector } from 'selectors';
 import Field from 'components/Field';
 
 const BoardContainer = styled(Flex).attrs({ flexDirection: 'row', flex: 1 })`
-  width: 800px;
-  height: 800px;
+  width: calc(100vh - 110px);
+  height: calc(100vh - 110px);
   border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 

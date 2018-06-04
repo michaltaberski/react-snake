@@ -25,6 +25,9 @@ class Game extends React.Component {
     return (
       <div>
         <h1>Game</h1>
+        <p>
+          by <a href="http://michaltaberski.com" target="_blank">Michal Taberski</a>, source <a href="https://github.com/michaltaberski/react-snake">Github michaltaberski/react-snake</a>
+        </p>
         <Board />
       </div>
     );
