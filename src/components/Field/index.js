@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex } from 'grid-styled';
 import styled, { css } from 'styled-components';
+import { onlyUpdateForKeys } from 'recompose';
 
 const FieldWrapper = styled(Flex).attrs({ flex: 1 })`
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -20,4 +21,4 @@ const Field = (props) => (
   <FieldWrapper value={props.value}>{props.children}</FieldWrapper>
 );
 
-export default Field;
+export default onlyUpdateForKeys(['value'])(Field);

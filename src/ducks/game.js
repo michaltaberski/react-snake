@@ -21,7 +21,7 @@ export const GAME_RUN = 'GAME_RUN';
 const rand = () => random(0, BOARD_SIZE - 1);
 
 const initialState = {
-  tickSpeed: 100,
+  tickSpeed: 150,
   isRunning: false,
   food: [
     [rand(), rand()],
