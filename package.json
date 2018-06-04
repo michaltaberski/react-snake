@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html --no-hmr -p 3000",
+    "build": "parcel build src/index.html",
+    "deploy": "yarn build && surge dist --domain demo-react-snake.surge.sh",
     "precommit": "lint-staged",
     "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx}\"",
     "eslint": "./node_modules/.bin/eslint src"
