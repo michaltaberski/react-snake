@@ -17,12 +17,14 @@ import { BOARD_SIZE } from 'config';
 export const GAME_TICK = 'GAME_TICK';
 export const GAME_TICK_CALLBACK = 'GAME_TICK_CALLBACK';
 export const GAME_RUN = 'GAME_RUN';
+export const GAME_RESET = 'GAME_RESET';
 
 const rand = () => random(0, BOARD_SIZE - 1);
 
 const initialState = {
   tickSpeed: 150,
   isRunning: false,
+  score: 0,
   food: [
     [rand(), rand()],
     [rand(), rand()],
@@ -42,6 +44,9 @@ export default function reducer(state = initialState, action) {
         food: {
           $set: food,
         },
+        score: {
+          $set: state.score + 1,
+        },
       });
     case GAME_RUN:
       return update(state, {
@@ -49,13 +54,24 @@ export default function reducer(state = initialState, action) {
           $set: action.payload,
         },
       });
+    case GAME_RESET:
+      return initialState;
     default:
       return state;
   }
 }
 
+export const resetGame = () => {
+  return {
+    type: GAME_RESET,
+  };
+}
+
+
 export const startGame = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const isRunning = isRunningSelector(getState());
+    if (isRunning) return;
     dispatch({type: GAME_RUN, payload: true});
     dispatch(gameTick());
   }

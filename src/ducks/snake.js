@@ -1,6 +1,6 @@
 import update from 'immutability-helper';
 import { INIT_SNAKE_BODY, DIRECTIONS } from 'config';
-import { GAME_TICK, GAME_TICK_CALLBACK } from './game';
+import { GAME_RESET, GAME_TICK, GAME_TICK_CALLBACK } from './game';
 import { getNextSnakeStep, removeTail, getUpdatedDirection, snakeEats } from 'lib/utils';
 
 const UPDATE_DIRECTION = 'UPDATE_DIRECTION';
@@ -23,6 +23,8 @@ export default function reducer(state = initialState, action) {
       return removeTail(state);
     case UPDATE_DIRECTION:
       return getUpdatedDirection(state, action.payload);
+    case GAME_RESET:
+      return initialState;
     default:
       return state;
   }

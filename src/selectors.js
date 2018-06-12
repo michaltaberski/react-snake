@@ -13,6 +13,8 @@ export const isRunningSelector = (state) => state.game.isRunning;
 
 export const foodSelector = (state) => state.game.food;
 
+export const scoreSelector = (state) => state.game.score;
+
 export const boardSpaceSelector = createSelector(
   snakeSelector,
   foodSelector,
